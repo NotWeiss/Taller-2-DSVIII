@@ -17,12 +17,6 @@ Public Class frmEntregas
             LeerCamion()
         Catch ex As Exception
             MsgBox("Parece que no hay camiones disponibles, Registre algunos antes de continuar", vbOKOnly, "Camiones no Disponibles")
-
-            Dim destination As New frmMain()
-
-            'Nos envia a otro form'
-            destination.Show()
-            Me.Hide()
         End Try
 
     End Sub
@@ -73,7 +67,7 @@ Public Class frmEntregas
         Dim rand As New Random()
         Dim flag As Integer = LeerInforme()
         txtInfoSaco.Clear()
-        If flag = 0 Then
+        If (flag = 0) Or (indiceData <> 1) Then
             txtInfoSaco.Text = CStr(rand.Next(2000, 8000)) + "Kgs"
         Else
             txtInfoSaco.Text = CStr(flag) + "Kgs"
@@ -127,7 +121,7 @@ Public Class frmEntregas
             Using writer As StreamWriter = New StreamWriter(filePath, True)
                 'Crea el archivo "informe.csv" si no existe'
                 If Not fileExist Then
-                    writer.WriteLine("Placa del Camion, Destino, Carga, Residuo")
+                    writer.WriteLine("Placa, Destino, Carga, Residuo")
                 End If
 
                 Dim data As String = $"{placa},{destino},{carga},{residuo}"
@@ -140,17 +134,21 @@ Public Class frmEntregas
     End Sub
 
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
-        Dim capacidad As Integer = LimpiarCaracteres(lboCamion.Items(3))
-        Dim carga As Integer = LimpiarCaracteres(lboCamion.Items(4))
-        Dim pesoSaco As Integer = LimpiarCaracteres(txtInfoSaco.Text)
+        Try
+            Dim capacidad As Integer = LimpiarCaracteres(lboCamion.Items(3))
+            Dim carga As Integer = LimpiarCaracteres(lboCamion.Items(4))
+            Dim pesoSaco As Integer = LimpiarCaracteres(txtInfoSaco.Text)
 
-        If (carga + pesoSaco <= capacidad) Then
-            carga += pesoSaco
-            lboCamion.Items(4) = "Carga Actual: " + CStr(carga) + "Kgs"
-            CrearSaco()
-        Else
-            MsgBox("El camion a alcanzado el maximo de su capacidad", vbOKOnly, "Limite Alcanzado")
-        End If
+            If (carga + pesoSaco <= capacidad) Then
+                carga += pesoSaco
+                lboCamion.Items(4) = "Carga Actual: " + CStr(carga) + "Kgs"
+                CrearSaco()
+            Else
+                MsgBox("El camion a alcanzado el maximo de su capacidad", vbOKOnly, "Limite Alcanzado")
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Function Destiny() As String
@@ -167,17 +165,22 @@ Public Class frmEntregas
     End Function
 
     Private Sub btnDesplegar_Click(sender As Object, e As EventArgs) Handles btnDesplegar.Click
-        Dim placaCamion = lboCamion.Items(1).replace("Placa: ", "")
-        Dim almacen = Destiny()
-        Dim peso = lboCamion.Items(4).replace("Carga Actual: ", "")
-        Dim sobrante = txtInfoSaco.Text
+        Try
+            Dim placaCamion = lboCamion.Items(1).replace("Placa: ", "")
+            Dim almacen = Destiny()
+            Dim peso = lboCamion.Items(4).replace("Carga Actual: ", "")
+            Dim sobrante = txtInfoSaco.Text
 
-        GenerarInforme(placaCamion, almacen, peso, sobrante)
-        If (indiceData + 1 <= limit) Then
-            LeerCamion()
-        Else
-            MsgBox("Parece que no hay mas camiones disponibles, procede a completar las entregas", vbOKOnly, "Completado")
-        End If
+            GenerarInforme(placaCamion, almacen, peso, sobrante)
+            If (indiceData + 1 <= limit) Then
+                lboCamion.Items.Clear()
+                LeerCamion()
+            Else
+                MsgBox("Parece que no hay mas camiones disponibles, procede a completar las entregas", vbOKOnly, "Completado")
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click

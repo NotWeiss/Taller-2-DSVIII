@@ -73,6 +73,7 @@ Partial Class frmInforme
         Controls.Add(lblInforme)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmInforme"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frmInforme"
         ResumeLayout(False)
         PerformLayout()

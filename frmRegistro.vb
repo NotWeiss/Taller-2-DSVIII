@@ -39,10 +39,11 @@ Public Class frmRegistro
             Dim cargaActual As String = "0" ' Carga actual siempre será 0 inicialmente
             Dim disponibilidad As String = "True"
 
+            Dim id As Integer = File.ReadAllLines(filePath).Length
+
             ' Agrega una nueva línea al archivo CSV
             Using writer As StreamWriter = New StreamWriter(filePath, True)
                 ' Genera un ID único basado en la cantidad de líneas en el archivo (puedes mejorar esto)
-                Dim id As Integer = File.ReadAllLines(filePath).Length
                 writer.WriteLine($"{id}, {placa}, {conductor}, {capacidad}, {cargaActual}, {disponibilidad}")
             End Using
 

@@ -32,6 +32,7 @@ Partial Class frmCreditos
         Label5 = New Label()
         Label6 = New Label()
         Label7 = New Label()
+        btnRegresar = New Button()
         SuspendLayout()
         ' 
         ' Label1
@@ -48,7 +49,7 @@ Partial Class frmCreditos
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(267, 115)
+        Label2.Location = New Point(267, 70)
         Label2.Name = "Label2"
         Label2.Size = New Size(465, 37)
         Label2.TabIndex = 1
@@ -58,7 +59,7 @@ Partial Class frmCreditos
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(355, 238)
+        Label3.Location = New Point(355, 161)
         Label3.Name = "Label3"
         Label3.Size = New Size(288, 37)
         Label3.TabIndex = 2
@@ -68,7 +69,7 @@ Partial Class frmCreditos
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(318, 288)
+        Label4.Location = New Point(318, 198)
         Label4.Name = "Label4"
         Label4.Size = New Size(363, 37)
         Label4.TabIndex = 3
@@ -78,7 +79,7 @@ Partial Class frmCreditos
         ' 
         lblPc.AutoSize = True
         lblPc.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblPc.Location = New Point(477, 357)
+        lblPc.Location = New Point(477, 254)
         lblPc.Name = "lblPc"
         lblPc.Size = New Size(45, 37)
         lblPc.TabIndex = 4
@@ -89,7 +90,7 @@ Partial Class frmCreditos
         ' 
         lblUser.AutoSize = True
         lblUser.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblUser.Location = New Point(466, 394)
+        lblUser.Location = New Point(466, 291)
         lblUser.Name = "lblUser"
         lblUser.Size = New Size(66, 37)
         lblUser.TabIndex = 5
@@ -100,7 +101,7 @@ Partial Class frmCreditos
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(394, 458)
+        Label5.Location = New Point(394, 346)
         Label5.Name = "Label5"
         Label5.Size = New Size(210, 37)
         Label5.TabIndex = 6
@@ -110,7 +111,7 @@ Partial Class frmCreditos
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(445, 516)
+        Label6.Location = New Point(445, 383)
         Label6.Name = "Label6"
         Label6.Size = New Size(109, 37)
         Label6.TabIndex = 7
@@ -120,17 +121,31 @@ Partial Class frmCreditos
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(441, 179)
+        Label7.Location = New Point(441, 107)
         Label7.Name = "Label7"
         Label7.Size = New Size(117, 37)
         Label7.TabIndex = 8
         Label7.Text = "Taller #2"
+        ' 
+        ' btnRegresar
+        ' 
+        btnRegresar.BackColor = Color.DarkSalmon
+        btnRegresar.FlatStyle = FlatStyle.Flat
+        btnRegresar.Font = New Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnRegresar.ForeColor = Color.Beige
+        btnRegresar.Location = New Point(355, 445)
+        btnRegresar.Name = "btnRegresar"
+        btnRegresar.Size = New Size(287, 50)
+        btnRegresar.TabIndex = 11
+        btnRegresar.Text = "REGRESAR"
+        btnRegresar.UseVisualStyleBackColor = False
         ' 
         ' frmCreditos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1000, 600)
+        Controls.Add(btnRegresar)
         Controls.Add(Label7)
         Controls.Add(Label6)
         Controls.Add(Label5)
@@ -158,4 +173,5 @@ Partial Class frmCreditos
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents btnRegresar As Button
 End Class

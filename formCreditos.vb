@@ -7,7 +7,11 @@
         lblUser.Text = Environ("USERNAME")
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+    Private Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
+        Dim destination As New frmMain()
 
+        'Nos envia a otro form'
+        destination.Show()
+        Me.Hide()
     End Sub
 End Class
